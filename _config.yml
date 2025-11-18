@@ -1,7 +1,7 @@
 title: 您的产品名称 | 简洁清晰的产品主页
 description: 这是一个使用 GitHub Pages 和 Jekyll 快速搭建的免费产品主页或博客。
 baseurl: "" # 如果是 <用户名>.github.io，留空。如果是项目子页，填上 /项目名
-url: "https://<替换为你的用户名>.github.io"
+url: "https://<bigbeijibear>.github.io"
 
 # Jekyll Build Settings
 themes: jekyll-theme-minimal
