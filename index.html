@@ -1,1 +1,82 @@
-```html\n---\nlayout: default\ntitle: 产品主页 - 简介清晰\n---\n\n\n \n {{ site.title }}\n {{ site.description }}\n \n\n \n 🎉 核心功能亮点\n \n \n 极速部署\n 基于GitHub Pages，零成本，瞬间上线。\n \n \n 简洁设计\n 使用Markdown编写，专注于内容，清晰易读。\n \n \n Blog支持\n 天然支持博客文章，轻松发布产品动态。\n \n \n \n\n \n\n \n 最新博客/动态\n \n {% for post in site.posts limit: 5 %}\n \n <a href="{{ post.url
+---
+layout: default
+title: 首页 - 大北极熊
+---
+
+<header class="masthead">
+  <div class="site-branding">
+    <img src="https://via.placeholder.com/80x80.png?text=🐻‍❄️" alt="Logo" class="site-logo"> 
+    <h1>大北极熊</h1>
+    <p class="tagline">精选文章与产品服务</p>
+  </div>
+</header>
+
+<nav class="main-navigation">
+    <a href="{{ '/' | relative_url }}">首页</a>
+    <a href="{{ '/blog' | relative_url }}">文章</a>
+    <a href="#">商品和服务</a>
+    <a href="#">外部网站和折扣券</a>
+    <a href="#">我的会员</a>
+    <a href="#">成为付费会员支持我</a>
+</nav>
+
+<main class="content-grid">
+  {% assign featured_posts = site.posts | limit: 4 %}
+  {% for post in featured_posts %}
+    <article class="post-card">
+      <a href="{{ post.url | relative_url }}">
+        <img src="https://via.placeholder.com/400x250.png?text=Post+Image+{{ forloop.index }}" alt="{{ post.title }}" class="post-thumbnail">
+      </a>
+      <div class="post-meta">
+        <span class="category">{{ post.categories | join: ', ' | default: '默认分类' }}</span>
+        <span class="date">{{ post.date | date: "%d %m月, %Y" }}</span>
+        <span> - by 大北极熊</span>
+      </div>
+      <h2 class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+      <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+
+      <div class="member-lock">
+          <p>您需要登录或加入会员才能查看此内容。</p>
+          <a href="#" class="button-join">阅读全文</a>
+      </div>
+    </article>
+  {% endfor %}
+</main>
+
+<style>
+/* --- 杂志风格 CSS (实现类似 HitMag 的简洁布局) --- */
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; background-color: #f7f7f7; color: #333; line-height: 1.6; }
+.main-content { max-width: 1200px; margin: 0 auto; padding: 20px 20px; }
+a { color: #0073aa; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Masthead (Logo and Branding) */
+.masthead { text-align: center; padding: 20px 0; background: url('https://via.placeholder.com/1200x200/333333/ffffff?text=Header+Image') no-repeat center center; background-size: cover; color: white; margin-bottom: 20px; }
+.site-branding { background-color: rgba(0, 0, 0, 0.4); padding: 10px; display: inline-block; }
+/* 调整 Logo 样式以适应新的 Logo 占位符 */
+.site-logo { width: 40px; height: 40px; vertical-align: middle; margin-right: 10px; border-radius: 50%; font-size: 2em; }
+.site-branding h1 { display: inline; font-size: 2em; margin: 0; vertical-align: middle; }
+.tagline { margin: 5px 0 0; font-size: 0.9em; }
+
+/* Navigation */
+.main-navigation { background-color: #333; padding: 10px 0; text-align: center; margin-bottom: 30px; }
+.main-navigation a { color: white; padding: 10px 15px; display: inline-block; font-size: 0.9em; text-transform: uppercase; }
+.main-navigation a:hover { background-color: #555; text-decoration: none; }
+
+/* Content Grid (Magazine Layout) */
+.content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+.post-card { background-color: white; border: 1px solid #eee; border-radius: 4px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+.post-thumbnail { width: 100%; height: auto; display: block; }
+.post-meta { font-size: 0.8em; color: #777; padding: 15px 15px 5px; text-transform: uppercase; }
+.category { font-weight: bold; color: #0073aa; }
+.post-title { font-size: 1.5em; margin: 0 0 10px; padding: 0 15px; }
+.post-card a { text-decoration: none; color: #333; }
+.post-card a:hover h2 { color: #0073aa; }
+.post-excerpt { padding: 0 15px 15px; font-size: 0.95em; color: #555; }
+
+/* Membership Lock */
+.member-lock { background-color: #f0f8ff; border-top: 1px solid #ddd; padding: 15px; text-align: center; }
+.member-lock p { margin: 0 0 10px; font-size: 0.9em; color: #555; }
+.button-join { background-color: #0073aa; color: white; padding: 8px 20px; border-radius: 3px; display: inline-block; transition: background-color 0.3s; }
+.button-join:hover { background-color: #0056b3; text-decoration: none; }
+</style>
